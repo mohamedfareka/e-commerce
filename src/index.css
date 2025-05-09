@@ -9,7 +9,9 @@
   --font-family: "Encode Sans Expanded", sans-serif;
   --rating-color: #ffc908;
 }
-
+.border-main {
+  border: 1px solid var(--main-color) !important; 
+}
 body {
   font-family: var(--font-family) !important;
 }
@@ -28,12 +30,13 @@ a:hover {
   box-shadow: var(--shadow);
   border: solid 1px var(--main-color);
 }
-.product .btn {
+.product .btn{
   transition: transform 1s, opacity 1s;
   transform: translateY(100%);
   opacity: 0;
+  z-index: 1000;
 }
-.product:hover .btn {
+.product:hover .btn{
   opacity: 1;
   transform: translateY(0%);
 }
