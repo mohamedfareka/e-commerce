@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-// import styles from './NavBar.module.css';
+import { cartContext } from "../../context/CartContext";
 
 export default function NavBar({ userData }) {
+  const { numberOfCartItems } = useContext(cartContext);
   return (
     <>
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
+      <nav className="navbar navbar-expand-sm navbar-light bg-light fixed-top">
         <div className="container">
           <Link className="navbar-brand" to="">
             <img src="./images/freshcart-logo.svg" alt="/" />
@@ -27,11 +28,6 @@ export default function NavBar({ userData }) {
                 <li className="nav-item">
                   <Link className="nav-link" to="">
                     Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="cart">
-                    Cart
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -60,7 +56,7 @@ export default function NavBar({ userData }) {
                 <i className="fab mx-2 fa-linkedin"></i>
                 <i className="fab mx-2 fa-youtube"></i>
               </li>
-              {userData? (
+              {userData ? (
                 <>
                   <li className="nav-item">
                     <Link className="nav-link" to="login">
@@ -74,9 +70,19 @@ export default function NavBar({ userData }) {
                   </li>
                 </>
               ) : (
-                <li className="nav-item">
-                  <Link className="nav-link">Logout</Link>
-                </li>
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link">Logout</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="cart">
+                      Cart 
+                      <span className="badge bg-main text-white ms-1">
+                        {numberOfCartItems}
+                      </span>
+                    </Link>
+                  </li>
+                </>
               )}
             </ul>
           </div>

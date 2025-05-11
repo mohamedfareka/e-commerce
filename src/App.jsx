@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
+import Checkout from "./components/Checkout/Checkout";
 import Register from "./components/Register/Register";
 import Categories from "./components/Categories/Categories";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -64,6 +65,14 @@ function App() {
           ),
         },
         {
+          path: "checkout",
+          element: (
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          ),
+        },
+        {
           path: "productDetails/:id",
           element: (
             <ProtectedRoute>
@@ -71,7 +80,6 @@ function App() {
             </ProtectedRoute>
           ),
         },
-
         {
           path: "cart",
           element: (

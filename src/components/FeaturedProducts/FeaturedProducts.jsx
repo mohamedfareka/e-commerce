@@ -4,13 +4,15 @@ import { cartContext } from "../../context/CartContext";
 import toast from "react-hot-toast";
 
 export default function FeaturedProducts() {
+
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
-  let { addToCart } = useContext(cartContext);
+  let { addToCart , setNumberOfCartItems } = useContext(cartContext);
 
   async function addProduct(productId) {
     let response = await addToCart(productId);
     if (response?.data?.status === "success") {
+      setNumberOfCartItems(response.data.numOfCartItems)
       toast.success(response.data.message, {
         duration: 2000,
       });
